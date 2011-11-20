@@ -1,0 +1,40 @@
+#{extends 'main.html' /}
+
+<div id="addsite">
+
+	<h1>Add a new site</h1>
+
+    #{ifErrors}
+   <h1>Oops…</h1>
+    #{/ifErrors}
+
+	#{form @added()}
+
+		#{if flash.error}
+			<p class="error">
+				&{flash.error}
+			</p>
+		#{/if}
+		#{if flash.success}
+			<p class="success">
+				&{flash.success}
+			</p>
+		#{/if}
+
+
+		<p id="url-field">
+			<label for="url">URL</label>
+
+
+            <input type="text" name="website.url" id="url" class="url-field" value="${flash[website.url]}" />
+
+
+            <!--<input type="text" name="website.url" id="url" class="url-field" value="" />-->
+            <span class="error">#{error 'website.url' /}</span>
+		</p>
+
+        <p id="add-field">
+			<input type="submit" id="add" value="Add" />
+		</p>
+    #{/form}
+</div>
